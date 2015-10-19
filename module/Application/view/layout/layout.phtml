@@ -1,55 +1,61 @@
 <?php echo $this->doctype(); ?>
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">  -->
 
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php echo $this->headTitle('ZF2 '. $this->translate('guestbook example'))->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?php echo $this->headMeta()
             ->appendName('viewport', 'width=device-width, initial-scale=1.0')
             ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
         ?>
-
         <!-- Le styles -->
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-                        ->prependStylesheet($this->basePath('css/style.css'))
-                        ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
-                        ->prependStylesheet($this->basePath('css/bootstrap.min.css')) ?>
-
-        <!-- Scripts -->
-        <?php echo $this->headScript()
-            ->prependFile($this->basePath('js/bootstrap.min.js'))
-            ->prependFile($this->basePath('js/jquery.min.js'))
-            ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
-            ->prependFile($this->basePath('js/html5shiv.min.js'),   'text/javascript', array('conditional' => 'lt IE 9',))
-        ; ?>
-
+                        ->prependStylesheet('http://fonts.googleapis.com/css?family=Arvo')
+                        ->prependStylesheet('http://fonts.googleapis.com/css?family=Coda:400,800')
+                        ->prependStylesheet($this->basePath('example-theme/style.css')) ?>
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('img/zf2-logo.png') ?>" alt="Zend Framework 2"/>&nbsp;<?php echo $this->translate('Skeleton Application') ?></a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div>
-        </nav>
+    
+    
+    <!-- header -->
+       <div id="menu-wrapper">
+    	   <div id="menu">
+        		<ul>
+        			<li class="current_page_item"><a href="#">Homepage</a></li>
+        			<li><a href="#">Blog</a></li>
+        			<li><a href="#">Photos</a></li>
+        			<li><a href="#">About</a></li>
+        			<li><a href="#">Links</a></li>
+        			<li><a href="#">Contact</a></li>
+        		</ul>
+    	   </div>
+    	<!-- end #menu -->
+        </div>
+        <div id="header-wrapper">
+        	<div id="header">
+        		<div id="logo">
+        			<h1><a href="#">Classifieds</a></h1>
+        			<p>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a></p>
+        		</div>
+        	</div>
+        </div>
+        <div id="banner"><img src="<?=$this->basePath('example-theme/images/Untitled-3.jpg')?>" width="1000" height="400" alt="" /></div>
+       
+       
+        
+        <!-- content -->
         <div class="container">
             <?php echo $this->content; ?>
             <hr>
-            <footer>
-                <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
-            </footer>
-        </div> <!-- /container -->
-        <?php echo $this->inlineScript() ?>
+        </div>
+        
+        
+        <!-- footer -->
+        <div id="footer">
+	       <p>2012. Untitled. All rights reserved. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by <a href="http://fotogrph.com/">fotogrph</a>.</p>
+        </div>
+    <!-- end #footer -->
     </body>
 </html>
