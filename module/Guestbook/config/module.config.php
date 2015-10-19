@@ -12,6 +12,16 @@ return array(
                     ),
                 ),
             ),
+            'book' => array(
+                'type' => 'literal',
+                'options' => array(
+                    'route'    => '/book',
+                    'defaults' => array(
+                        'controller' => 'guestbook-index',
+                        'action'     => 'book',
+                    ),
+                ),
+            ),
         ),
     ),
     'controllers' => array(
