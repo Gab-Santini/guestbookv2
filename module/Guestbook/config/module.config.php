@@ -19,4 +19,9 @@ return array(
             'guestbook-index' => 'Guestbook\Controller\IndexController'
         ),
     ),
+    'view_manager' => array(
+        'template_path_stack' => array(
+            'guestbook' => __DIR__ . '/../view',
+        ),
+    ),
 );
