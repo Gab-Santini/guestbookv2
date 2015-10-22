@@ -27,8 +27,9 @@ class Module
     {
         return array(
             'invokables' => array(
-                'guestbook_model_entry' => 'Guestbook\Model\Entry',
-                'guestbook_entry_filter' => 'Guestbook\Form\EntryFilter',  
+                'guestbook_entry_service'   => 'Guestbook\Service\Entry',
+                'guestbook_model_entry'     => 'Guestbook\Model\Entry',
+                'guestbook_entry_filter'    => 'Guestbook\Form\EntryFilter',  
             ),
             'factories' => array(
                 'guestbook_entry_table' =>  function($sm) {
