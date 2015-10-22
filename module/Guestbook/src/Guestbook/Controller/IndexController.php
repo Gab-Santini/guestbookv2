@@ -3,6 +3,7 @@ namespace Guestbook\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Guestbook\Form\Entry;
 
 class IndexController extends AbstractActionController
 {
@@ -24,10 +25,13 @@ class IndexController extends AbstractActionController
     
     public function bookAction()
     {
+        $form = new Entry();
         $entries = $this->getEntryTable()->findAll();
+        
         return new ViewModel(
                 array(
-                        'entries' => $entries
+                        'entries'   => $entries,
+                        'entryForm' => $form
                     )
             );
     }
