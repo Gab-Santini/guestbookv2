@@ -13,6 +13,16 @@ table, th, td {
 <div id="wrapper">
 	<!-- end #header -->
 	<div id="page">
+    	<section>
+            <h1>Create a new entry</h1>
+    
+            <?php
+            $this->entryForm->setAttribute('action', $this->url('book'));
+            $this->entryForm->setAttribute('method', 'post');
+            $this->entryForm->prepare();
+            ?>
+            <?=$this->form($this->entryForm);?>
+        </section>
 		<section>
         <h1>All recent entries</h1>
         <table style="width: 700px;">
