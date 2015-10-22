@@ -4,6 +4,7 @@ namespace Guestbook\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Guestbook\Form\Entry;
+use Guestbook\Form\EntryFilter;
 
 class IndexController extends AbstractActionController
 {
@@ -27,7 +28,16 @@ class IndexController extends AbstractActionController
     {
         $form = new Entry();
         $entries = $this->getEntryTable()->findAll();
-        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $filter = new EntryFilter();
+            $form->setInputFilter($filter);  
+            $form->setData($request->getPost());
+            if ($form->isValid()) {
+                echo 'Form is valid !';
+            }
+        }
+ 
         return new ViewModel(
                 array(
                         'entries'   => $entries,
