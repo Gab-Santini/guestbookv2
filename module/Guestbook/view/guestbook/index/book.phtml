@@ -1,7 +1,37 @@
+<style>
+table {
+    border-collapse: collapse;
+	width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+	text-align: left;
+	height: 30px;
+}
+</style>
 <div id="wrapper">
 	<!-- end #header -->
 	<div id="page">
-		Second page
+		<section>
+        <h1>All recent entries</h1>
+        <table style="width: 700px;">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Website</th>
+            <th>Message</th>
+        </tr>
+        <?php foreach ($this->entries as $entry): ?>
+        <tr>
+            <td><?=$entry->getName()?></td>
+            <td><?=$entry->getEmail()?></td>
+            <td><?=$entry->getWebsite()?></td>
+            <td><?=$entry->getMessage()?></td>
+        </tr>
+        <?php endforeach; ?>
+        </table>
+    </section>
 	</div>
 	<!-- end #page -->
 </div>
