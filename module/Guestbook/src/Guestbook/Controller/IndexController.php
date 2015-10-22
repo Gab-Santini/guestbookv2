@@ -6,6 +6,17 @@ use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
+    private $entryTable;
+    
+    public function getEntryTable()
+    {
+        if (!$this->entryTable) {
+            $sm = $this->getServiceLocator();
+            $this->entryTable = $sm->get('guestbook_entry_table');
+        }
+        return $this->entryTable;
+    }
+    
     public function indexAction()
     {
         return new ViewModel();
@@ -13,6 +24,11 @@ class IndexController extends AbstractActionController
     
     public function bookAction()
     {
-        return new ViewModel();
+        $entries = $this->getEntryTable()->findAll();
+        return new ViewModel(
+                array(
+                        'entries' => $entries
+                    )
+            );
     }
 }
