@@ -3,6 +3,7 @@ namespace Guestbook\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Guestbook\Model\Entry;
 
 class IndexController extends AbstractActionController
 {
@@ -37,11 +38,15 @@ class IndexController extends AbstractActionController
     {
         $entries = $this->getEntryTable()->findAll();
         $request = $this->getRequest();
+        $entry = new Entry();
         $form = $this->getEntryForm();
         if ($request->isPost()) { 
             $form->setData($request->getPost());
             if ($form->isValid()) {
-                echo 'Form is valid !';
+                
+                $entry->exchangeArray($form->getData());
+                $this->entryTable->add($entry);
+                return $this->redirect()->toRoute('book');
             }
         }
  

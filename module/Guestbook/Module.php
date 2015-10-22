@@ -1,7 +1,6 @@
 <?php
 namespace Guestbook;
 
-use Guestbook\Model\Entry;
 use Zend\Db\ResultSet\ResultSet;
 use Guestbook\Model\EntryTable;
 use Guestbook\Form\Entry as EntryForm;
