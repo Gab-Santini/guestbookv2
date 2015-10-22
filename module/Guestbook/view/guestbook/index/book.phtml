@@ -21,7 +21,25 @@ table, th, td {
             $this->entryForm->setAttribute('method', 'post');
             $this->entryForm->prepare();
             ?>
-            <?=$this->form($this->entryForm);?>
+            <?php echo $this->form()->openTag($this->entryForm) ?>
+        <dl>
+            <dt><?php 
+            $name = $this->entryForm->get('name');
+            echo $this->formLabel($name); ?></dt>
+            <dd><?php echo $this->formText($name) . $this->formElementErrors($name); ?></dd>
+
+            <dt><?php echo $this->formLabel($this->entryForm->get('email')); ?></dt>
+            <dd><?php echo $this->formEmail($this->entryForm->get('email')) . $this->formElementErrors($this->entryForm->get('email')); ?></dd>
+
+            <dt><?php echo $this->formLabel($this->entryForm->get('website')); ?></dt>
+            <dd><?php echo $this->formUrl($this->entryForm->get('website')) . $this->formElementErrors($this->entryForm->get('website')); ?></dd>
+
+            <dt><?php echo $this->formLabel($this->entryForm->get('message')); ?></dt>
+            <dd><?php echo $this->formTextarea($this->entryForm->get('message')) . $this->formElementErrors($this->entryForm->get('message')); ?></dd>
+
+            <dd><?php echo $this->formSubmit($this->entryForm->get('submit')); ?></dd>
+        </dl>
+        <?php echo $this->form()->closeTag() ?>
         </section>
 		<section>
         <h1>All recent entries</h1>
