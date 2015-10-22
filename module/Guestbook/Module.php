@@ -4,6 +4,9 @@ namespace Guestbook;
 use Guestbook\Model\Entry;
 use Zend\Db\ResultSet\ResultSet;
 use Guestbook\Model\EntryTable;
+use Guestbook\Form\Entry as EntryForm;
+use Guestbook\Form\EntryFilter; 
+
 class Module
 {
     public function getConfig()
@@ -32,6 +35,12 @@ class Module
                     $resultSetPrototype->setArrayObjectPrototype(new Entry());
                     $entryTable =  new EntryTable('guestbook_entry', $dbAdapter, null, $resultSetPrototype);
                     return $entryTable;
+                },
+                'guestbook_form' => function($sm) {
+                    $entryForm = new EntryForm();
+                    $filter = new EntryFilter();
+                    $entryForm->setInputFilter($filter);
+                    return $entryForm;
                 }
             ),
         );

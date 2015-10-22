@@ -3,12 +3,12 @@ namespace Guestbook\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Guestbook\Form\Entry;
-use Guestbook\Form\EntryFilter;
 
 class IndexController extends AbstractActionController
 {
     private $entryTable;
+    
+    private $entryForm;
     
     public function getEntryTable()
     {
@@ -19,6 +19,15 @@ class IndexController extends AbstractActionController
         return $this->entryTable;
     }
     
+    public function getEntryForm()
+    {
+        if (!$this->entryForm) {
+            $sm = $this->getServiceLocator();
+            $this->entryForm = $sm->get('guestbook_form');
+        }
+        return $this->entryForm;
+    }
+    
     public function indexAction()
     {
         return new ViewModel();
@@ -26,12 +35,10 @@ class IndexController extends AbstractActionController
     
     public function bookAction()
     {
-        $form = new Entry();
         $entries = $this->getEntryTable()->findAll();
         $request = $this->getRequest();
-        if ($request->isPost()) {
-            $filter = new EntryFilter();
-            $form->setInputFilter($filter);  
+        $form = $this->getEntryForm();
+        if ($request->isPost()) { 
             $form->setData($request->getPost());
             if ($form->isValid()) {
                 echo 'Form is valid !';
