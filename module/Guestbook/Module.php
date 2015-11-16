@@ -1,6 +1,6 @@
 <?php
 namespace Guestbook;
-
+use Guestbook\Service\Entry;
 class Module
 {
     public function getConfig()
@@ -15,6 +15,17 @@ class Module
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
+            ),
+        );
+    }
+    
+    public function getServiceConfig()
+    {
+        return array(
+            'factories' => array(
+                'service_entry' =>  function() {
+                    return new Entry();    
+                }
             ),
         );
     }
