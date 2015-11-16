@@ -3,6 +3,7 @@ namespace Guestbook\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Guestbook\Service\Entry as ServiceEntry;
 
 class IndexController extends AbstractActionController
 {
@@ -13,6 +14,10 @@ class IndexController extends AbstractActionController
     
     public function bookAction()
     {
-        return new ViewModel();
+        $entryService = new ServiceEntry();
+        
+        return new ViewModel([
+                'entries' => $entryService->findAll()
+            ]);
     }
 }
